@@ -1,2 +1,2 @@
 # Redirects for Cloudflare Pages
-/* /configs/:splat 200
+# No redirects needed for direct file access
