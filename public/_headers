@@ -1,0 +1,4 @@
+# Headers for Cloudflare Pages
+# Set Content-Type header for all files to text/plain
+/*
+  Content-Type: text/plain

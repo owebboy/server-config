@@ -11,12 +11,13 @@ NC='\033[0m'  # No Color
 echo -e "${GREEN}Initializing Git repository...${NC}"
 git init
 
-# Check if the _redirects file exists and contains Content-Type header
-if ! grep -q "Content-Type=text/plain" public/_redirects 2>/dev/null; then
-    echo -e "${GREEN}Creating/updating _redirects file for Cloudflare Pages...${NC}"
-    echo "# Redirects for Cloudflare Pages
-# Set Content-Type header for config files to text/plain
-/* Content-Type=text/plain" > public/_redirects
+# Check if the _headers file exists and contains Content-Type header
+if ! grep -q "Content-Type: text/plain" public/_headers 2>/dev/null; then
+    echo -e "${GREEN}Creating/updating _headers file for Cloudflare Pages...${NC}"
+    echo "# Headers for Cloudflare Pages
+# Set Content-Type header for all files to text/plain
+/*
+  Content-Type: text/plain" > public/_headers
 fi
 
 echo -e "${GREEN}Adding files to repository...${NC}"

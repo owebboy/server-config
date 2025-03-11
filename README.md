@@ -90,7 +90,7 @@ This project is optimized for deployment with Cloudflare Pages, which provides f
      - Build command: Leave empty
      - Build output directory: `public`
      - Root directory: `/`
-   - The `_redirects` file ensures config files are served as plain text
+   - The `_headers` file ensures config files are served as plain text
    - Deploy the site
 
 4. After deployment, your configs will be available at `https://yourproject.pages.dev/configs/`
@@ -159,7 +159,7 @@ To customize the configurations:
 
 When using Cloudflare Pages (or any web server):
 
-- The `_redirects` file in the `public` directory sets the `Content-Type: text/plain` header for all files
+- The `_headers` file in the `public` directory sets the `Content-Type: text/plain` header for all files
 - This ensures that configuration files are displayed as plain text in the browser, not downloaded
 - The web interface at the root URL provides an easy way to browse available configuration files
 
