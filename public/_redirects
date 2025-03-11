@@ -1,2 +1,3 @@
 # Redirects for Cloudflare Pages
-# No redirects needed for direct file access
+# Set Content-Type header for config files to text/plain
+/* Content-Type=text/plain
