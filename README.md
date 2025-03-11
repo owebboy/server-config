@@ -52,7 +52,25 @@ This will copy configuration files from the `configs/` directory to their approp
 
 ### Remote Server Installation
 
-After creating your configurations, you have two options for server deployment:
+The easiest way to install configurations is with the one-liner:
+
+```bash
+curl -sL https://config.opope.dev/server_setup.sh | bash
+```
+
+Or with wget:
+
+```bash
+wget -qO- https://config.opope.dev/server_setup.sh | bash
+```
+
+To force overwrite existing configuration files:
+
+```bash
+curl -sL https://config.opope.dev/server_setup.sh | bash -s -- --force
+```
+
+Alternatively, you have two options for server deployment:
 
 #### Option 1: Host the configs on a web server
 
@@ -77,7 +95,7 @@ This project is optimized for deployment with Cloudflare Pages, which provides f
 
 2. Create a new GitHub repository and push your code:
    ```bash
-   git remote add origin https://github.com/yourusername/server-config.git
+   git remote add origin https://github.com/owebboy/server-config.git
    git branch -M main
    git push -u origin main
    ```
@@ -90,7 +108,7 @@ This project is optimized for deployment with Cloudflare Pages, which provides f
      - Build command: Leave empty
      - Build output directory: `public`
      - Root directory: `/`
-   - The `_headers` file ensures config files are served as plain text
+   - The `_headers` file ensures all files in the configs/ directory are served as plain text
    - Deploy the site
 
 4. After deployment, your configs will be available at `https://yourproject.pages.dev/configs/`
@@ -159,7 +177,9 @@ To customize the configurations:
 
 When using Cloudflare Pages (or any web server):
 
-- The `_headers` file in the `public` directory sets the `Content-Type: text/plain` header for all files
+- Configuration files are stored in a dedicated `configs/` directory
+- The `_headers` file sets the `Content-Type: text/plain` header for all files in the configs directory
+- The `_redirects` file maintains backward compatibility by redirecting root-level URLs to the configs directory
 - This ensures that configuration files are displayed as plain text in the browser, not downloaded
 - The web interface at the root URL provides an easy way to browse available configuration files
 

@@ -1,0 +1,63 @@
+# ----------------------------------------------------------------------
+# ~/.vimrc - Vim configuration
+
+" Basic settings
+set nocompatible          " Use Vim defaults
+set encoding=utf-8        " Use UTF-8 encoding
+set number                " Show line numbers
+set ruler                 " Show cursor position
+set showcmd               " Show incomplete commands
+set showmode              " Show current mode
+set laststatus=2          " Always show status line
+set wildmenu              " Enhanced command line completion
+set wildmode=list:longest " Complete files like a shell
+set autoread              " Reload files changed outside vim
+set hidden                " Allow buffer switching without saving
+set backspace=indent,eol,start " Backspace over everything in insert mode
+
+" Indentation settings
+set autoindent            " Auto-indent new lines
+set smartindent           " Smart indent
+set expandtab             " Use spaces instead of tabs
+set shiftwidth=4          " Number of auto-indent spaces
+set softtabstop=4         " Number of spaces per Tab
+set tabstop=4             " Number of spaces tab is counted for
+
+" Search settings
+set hlsearch              " Highlight search results
+set incsearch             " Incremental search
+set ignorecase            " Case-insensitive search
+set smartcase             " Case-sensitive if search contains uppercase
+
+" Performance settings
+set lazyredraw            " Don't redraw while executing macros
+set ttyfast               " Faster terminal connection
+
+" Visual settings
+set showmatch             " Show matching brackets
+set mat=2                 " How many tenths of a second to blink
+set colorcolumn=80        " Highlight column 80
+syntax enable             " Enable syntax highlighting
+set background=dark       " Dark background for better contrast in terminals
+
+" Backup and swap settings
+set nobackup              " No backup files
+set nowritebackup         " No backup while editing
+set noswapfile            " No swap files
+
+" Key mappings
+let mapleader=","         " Leader key
+" Quick save
+nnoremap <leader>w :w<CR>
+" Clear search highlighting
+nnoremap <leader><space> :noh<CR>
+" Navigate between splits with Ctrl+hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" For git commit messages, set wrap and spell check
+autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType gitcommit setlocal spell
+

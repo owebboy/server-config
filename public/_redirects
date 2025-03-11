@@ -1,2 +1,13 @@
 # Redirects for Cloudflare Pages
-# No redirects needed for direct file access
+# Redirect root-level config files to the configs directory
+
+/bashrc /configs/bashrc 301
+/vimrc /configs/vimrc 301
+/tmux.conf /configs/tmux.conf 301
+/gitconfig /configs/gitconfig 301
+/screenrc /configs/screenrc 301
+/inputrc /configs/inputrc 301
+/ssh_config /configs/ssh_config 301
+/bash_functions /configs/bash_functions 301
+/gitignore_global /configs/gitignore_global 301
+/dircolors /configs/dircolors 301

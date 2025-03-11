@@ -64,52 +64,52 @@
             <th>Destination</th>
         </tr>
         <tr>
-            <td><a href="bashrc">bashrc</a></td>
+            <td><a href="configs/bashrc">bashrc</a></td>
             <td>Bash shell configuration</td>
             <td><code>~/.bashrc</code></td>
         </tr>
         <tr>
-            <td><a href="vimrc">vimrc</a></td>
+            <td><a href="configs/vimrc">vimrc</a></td>
             <td>Vim editor settings</td>
             <td><code>~/.vimrc</code></td>
         </tr>
         <tr>
-            <td><a href="tmux.conf">tmux.conf</a></td>
+            <td><a href="configs/tmux.conf">tmux.conf</a></td>
             <td>Tmux terminal multiplexer config</td>
             <td><code>~/.tmux.conf</code></td>
         </tr>
         <tr>
-            <td><a href="gitconfig">gitconfig</a></td>
+            <td><a href="configs/gitconfig">gitconfig</a></td>
             <td>Git configuration</td>
             <td><code>~/.gitconfig</code></td>
         </tr>
         <tr>
-            <td><a href="screenrc">screenrc</a></td>
+            <td><a href="configs/screenrc">screenrc</a></td>
             <td>GNU Screen configuration</td>
             <td><code>~/.screenrc</code></td>
         </tr>
         <tr>
-            <td><a href="inputrc">inputrc</a></td>
+            <td><a href="configs/inputrc">inputrc</a></td>
             <td>Readline configuration</td>
             <td><code>~/.inputrc</code></td>
         </tr>
         <tr>
-            <td><a href="ssh_config">ssh_config</a></td>
+            <td><a href="configs/ssh_config">ssh_config</a></td>
             <td>SSH client configuration</td>
             <td><code>~/.ssh/config</code></td>
         </tr>
         <tr>
-            <td><a href="bash_functions">bash_functions</a></td>
+            <td><a href="configs/bash_functions">bash_functions</a></td>
             <td>Custom bash functions</td>
             <td><code>~/.bash_functions</code></td>
         </tr>
         <tr>
-            <td><a href="gitignore_global">gitignore_global</a></td>
+            <td><a href="configs/gitignore_global">gitignore_global</a></td>
             <td>Global Git ignore rules</td>
             <td><code>~/.gitignore_global</code></td>
         </tr>
         <tr>
-            <td><a href="dircolors">dircolors</a></td>
+            <td><a href="configs/dircolors">dircolors</a></td>
             <td>Terminal color settings</td>
             <td><code>~/.dircolors</code></td>
         </tr>
@@ -118,13 +118,23 @@
     <h2>Usage</h2>
     <p>To use these configuration files, you can either:</p>
     <ol>
-        <li>Download the <a href="https://github.com/popeoliv/server-config">server-config</a> repository and run the setup script</li>
+        <li>Download the <a href="https://github.com/owebboy/server-config">server-config</a> repository and run the setup script</li>
         <li>Use the URL of this site as the <code>CONFIG_URL</code> in your own deployment script</li>
         <li>Download files individually and place them in the appropriate locations</li>
     </ol>
     
+    <h2>Quick Install</h2>
+    <p>Run this one-liner to download and execute the setup script:</p>
+    <pre><code>curl -sL https://config.opope.dev/server_setup.sh | bash</code></pre>
+    
+    <p>Or with wget:</p>
+    <pre><code>wget -qO- https://config.opope.dev/server_setup.sh | bash</code></pre>
+    
+    <p>To force overwrite existing configuration files:</p>
+    <pre><code>curl -sL https://config.opope.dev/server_setup.sh | bash -s -- --force</code></pre>
+    
     <div class="footer">
-        <p>Server Configuration Manager &copy; 2025</p>
+        <p>Server Configuration Manager &copy; 2025 | <a href="https://github.com/owebboy/server-config">GitHub Repository</a></p>
     </div>
 </body>
 </html>

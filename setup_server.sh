@@ -7,7 +7,7 @@
 
 set -e
 
-CONFIG_URL="https://config.opope.dev"  # Web server URL for config files
+CONFIG_URL="https://config.opope.dev/configs"  # Web server URL for config files
 BACKUP_DIR="$HOME/.config_backup_$(date +%Y%m%d_%H%M%S)"
 FORCE=0
 CREATE_WEB_CONFIGS=0
@@ -529,7 +529,7 @@ create_server_setup_script() {
         echo ''
         echo 'set -e'
         echo ''
-        echo 'CONFIG_URL="https://config.opope.dev"'
+        echo 'CONFIG_URL="https://config.opope.dev/configs"'
         echo 'BACKUP_DIR="$HOME/.config_backup_$(date +%Y%m%d_%H%M%S)"'
         echo 'FORCE=0'
         echo ''
@@ -682,6 +682,13 @@ create_server_setup_script() {
     } > server_setup.sh
     
     chmod +x server_setup.sh
+    
+    # Copy to public directory for web access
+    if [[ -d "public" ]]; then
+        cp -f server_setup.sh public/
+        log_info "Copied server_setup.sh to public directory for web access"
+    fi
+    
     log_success "Created server_setup.sh script"
     log_info "Upload this script to your server and run it to configure your server."
 }
