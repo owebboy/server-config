@@ -1,0 +1,70 @@
+# ~/.bash_functions - Custom bash functions
+
+# Create a directory and change to it
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Find file by name
+ff() {
+    find . -type f -name "*$1*" -print
+}
+
+# Extract most archive types
+extract() {
+    if [ -f "$1" ]; then
+        case "$1" in
+            *.tar.bz2)   tar xjf "$1"     ;;
+            *.tar.gz)    tar xzf "$1"     ;;
+            *.bz2)       bunzip2 "$1"     ;;
+            *.rar)       unrar e "$1"     ;;
+            *.gz)        gunzip "$1"      ;;
+            *.tar)       tar xf "$1"      ;;
+            *.tbz2)      tar xjf "$1"     ;;
+            *.tgz)       tar xzf "$1"     ;;
+            *.zip)       unzip "$1"       ;;
+            *.Z)         uncompress "$1"  ;;
+            *.7z)        7z x "$1"        ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# Show top processes by memory usage
+memtop() {
+    ps axo %mem,pid,euser,cmd | sort -nr | head "${1:-10}"
+}
+
+# Show top processes by CPU usage
+cputop() {
+    ps axo %cpu,pid,euser,cmd | sort -nr | head "${1:-10}"
+}
+
+# Simple HTTP server in current directory
+serve() {
+    local port="${1:-8000}"
+    python -m SimpleHTTPServer "$port" 2>/dev/null || python3 -m http.server "$port"
+}
+
+# Get external IP address
+myip() {
+    curl -s https://ipinfo.io/ip
+}
+
+# Backup a file with timestamp
+backup() {
+    cp "$1" "$1.$(date +%Y%m%d-%H%M%S).bak"
+}
+
+# Search command history
+hist() {
+    history | grep "$1"
+}
+
+# Generate a random password
+genpass() {
+    local length="${1:-16}"
+    tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c "$length"; echo
+}

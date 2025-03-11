@@ -1,0 +1,24 @@
+# ~/.screenrc - GNU Screen configuration
+
+# Enable mouse scrolling and scroll bar history scrolling
+termcapinfo xterm* ti@:te@
+
+# No welcome message
+startup_message off
+
+# Set a large scrollback buffer
+defscrollback 10000
+
+# Always start with visual bell
+vbell on
+vbell_msg "Bell in window %n"
+
+# Caption line
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"
+
+# Default screens
+screen -t Shell 1 bash
+screen -t Monitor 2 htop
+
+# Use Ctrl-a a to send Ctrl-a to the application
+bind a send-prefix

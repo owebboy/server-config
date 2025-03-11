@@ -1,0 +1,81 @@
+#!/bin/bash
+# ~/.bashrc - Server Configuration
+# This file is managed by server-config setup script
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# History control
+HISTCONTROL=ignoreboth
+HISTSIZE=10000
+HISTFILESIZE=20000
+shopt -s histappend
+
+# Check window size after commands
+shopt -s checkwinsize
+
+# Make less more friendly
+export LESS="-R"
+
+# Set default editor
+export EDITOR=vim
+export VISUAL=vim
+
+# Set colored prompt
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# Enable color support
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# Some useful aliases
+alias ll='ls -alh'
+alias la='ls -A'
+alias l='ls -CF'
+alias h='history'
+alias c='clear'
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# Source bash functions if available
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
+# Add local bin directory to PATH
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# Server monitoring shortcuts
+alias sysstats='echo "--- DISK USAGE ---" && df -h && echo "--- MEMORY USAGE ---" && free -h && echo "--- SYSTEM LOAD ---" && uptime'
+alias processes='ps aux | sort -nrk 3,3 | head -n 20'
+alias connections='netstat -tunapl | grep ESTABLISHED'
+
+# Security
+alias auth_log='sudo tail -f /var/log/auth.log'
+alias fw_status='sudo ufw status verbose'
+
+# Quick edit for common config files
+alias edit_bashrc='$EDITOR ~/.bashrc && source ~/.bashrc'
+alias edit_vimrc='$EDITOR ~/.vimrc'
+alias edit_tmux='$EDITOR ~/.tmux.conf'
+
+# Directory navigation
+alias projects='cd ~/projects'
+alias logs='cd /var/log'
+alias www='cd /var/www'
+
+# Timestamp functions
+alias now='date +"%T"'
+alias today='date +"%Y-%m-%d"'

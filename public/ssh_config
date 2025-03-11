@@ -1,0 +1,26 @@
+# ~/.ssh/config - SSH configuration example
+
+# Global settings
+Host *
+    # Security
+    Protocol 2
+    HashKnownHosts yes
+    StrictHostKeyChecking ask
+    
+    # Connection
+    ConnectTimeout 30
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    
+    # Authentication
+    IdentitiesOnly yes
+    AddKeysToAgent yes
+    
+    # Compression and speed
+    Compression yes
+    TCPKeepAlive yes
+    
+    # Forward keys and X11 selectively, not globally
+    ForwardAgent no
+    ForwardX11 no
+
